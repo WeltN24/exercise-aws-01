@@ -20,7 +20,7 @@ without access to servers or containers.
 
 - the code is go-gettable:
 
-	go get github.com/WeltN24/exercise-aws-01
+		go get github.com/WeltN24/exercise-aws-01
 
 - you have the freedom to choose any technology you think it makes sense
 
