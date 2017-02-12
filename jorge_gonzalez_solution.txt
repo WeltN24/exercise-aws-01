@@ -1,0 +1,18 @@
+1) The chosen solution for the challenge is composed of the following:
+	a) 3 docker containers with the exercise-aws-01 binary running in the backend (ports 9091, 9092 and 9093).
+	b) An nginx load balancer front-end to switch the load between the three backends.
+	c) rsyslog for log aggregation, sending the logs to a specific file under nginx shared documents in the filesystem.
+	d) Nginx front-end to show the aggregated logs.
+	e) A shell script that would do all the required work to configure and bring up the services, fulfilling the initial request.
+2) Better HA should have the cointainers running in other machines, in case there is a problem with any of those the rest of the machines would still be up and running.
+3) The ideal solution would run on Chef (or any other Orchestration Software) however I did not have much time to work on this, due to the fact that I still work and I had a visit this weekend. Any case I do have the knowledge to do it, even if I am not very proficient in Chef.
+4) Ideally there would be another container with nginx running under the same docker network as the weltn24 containers, acting as the load balancer, so that nginx would be able to address them as a load balancer. I didn't do this since my knowledge of Docker is very limited (I started with it this weekend). Probably this issue and the orchestration one (at least partially) can be addressed with Kubernetes.
+5) Also ideally, the nginx front-end for the log aggregation would be in a docker container.
+6) sebp/elk Elasticsearch-Logstash-Kibana docker image failed with "OpenJDK 64-Bit Server VM warning: INFO: os::commit_memory(0x0000000085330000, 2060255232, 0) failed; error='Cannot allocate memory' (errno=12); Couln't start Elasticsearch. Exiting." Due to the AWS images I was using, therefore I opted for a log aggregation using rsyslog, super simple solution, but one that works. The logs can be seen properly using curl/wget instead of a web browser.
+7) The port 80 and 50050, used for the load balancer and log aggregation need to be open in the AWS instance.
+8) The role description said that it was important to engage non-technical stakeholders in the process, so for that reason I will give an explanation of what I did and why, in a less technical manner.
+	a) After assesing the task, my knowledge and the time available I decided to implement a simple system that would be able to handle thousands of requests per minute relying on three backends and one front-end.
+	b) The system can be easily expanded with the technologies used.
+	c) A well known technology for log aggregation was evaluated and discarded (ELK), since the platform in which the service would run is too small, another way simpler solution was put in place, not as powerful as the other but still complies with the given requirements.
+	d) More time would definitely have allowed a better solution, as well as a better platform.
+	e) Everything is automated but the opening of the required ports for the exercise and to see the aggregated logs.
