@@ -1,4 +1,4 @@
-package main
+package main // import exercise-aws-01/main.go
 
 import (
 	"expvar"
