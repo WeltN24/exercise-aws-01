@@ -1,11 +1,11 @@
 Ship a small service in AWS
 ===========================
 
-####Exercise:
+#Exercise:
 
 We want to deploy this small service in the cloud.
 
-####Acceptance criteria:
+#Acceptance criteria:
 
 - there should be a small script or a program which we can use to deploy our code in AWS. The service should be highly available.
 
@@ -16,7 +16,7 @@ without access to servers or containers.
 
 - (optional) monitor the number of redirects triggered by the service.
 
-####Hints:
+#Hints:
 
 - the code is go-gettable:
 
@@ -26,7 +26,7 @@ without access to servers or containers.
 
 - commit frequently so we can see how you have approached the problem
 
-####How to contribute your solution:
+#How to contribute your solution:
 
 1. Fork the repo
 2. Commit everything that you do in your fork
